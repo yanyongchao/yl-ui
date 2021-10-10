@@ -1,4 +1,1 @@
-
-var j = 'ss'
-
-const b = 0
+export { default as Alert } from './components/alert';
