@@ -1,5 +1,5 @@
 ---
-title: Alert 警告提示
+title: Button 按钮组件
 nav:
   title: 组件
   order: 2
