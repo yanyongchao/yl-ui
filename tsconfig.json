@@ -5,13 +5,13 @@
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
-    "declarationDir": "lib",
+    "declarationDir": ".",
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "typings.d.ts", "src/components"],
+  "include": ["src", "packages", "typings.d.ts", "src/components"],
   "exclude": ["node_modules"]
 }
