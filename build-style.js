@@ -35,7 +35,7 @@ const getPlugins = () => {
           javascriptEnabled: true,
         }
       },
-      extract: 'style/index.css'
+      extract: 'index.css'
     }),
     babel({
       exclude: 'node_modules/**',
@@ -53,22 +53,18 @@ module.exports = fs
     const pkg = require(path.resolve(root, item, 'package.json'))
 
     return {
-      input: path.resolve(root, item, 'src/index.tsx'),
+      input: path.resolve(root, item, 'src/style/index.ts'),
+      // treeshake: { moduleSideEffects: false },
       output: [
         {
           name: 'index',
-          file: path.resolve(root, item, pkg.main),
-          format: 'umd',
+          file: path.resolve(root, item, 'lib' ,'style/index.js'),
+          format: 'cjs',
           sourcemap: isDev,
-          globals: {
-            'react': 'React',
-            'react-dom': 'ReactDOM',
-            'antd': 'Antd'
-          }
         },
         {
           name: 'index',
-          file: path.join(root, item, pkg.module),
+          file: path.join(root, item, 'es', 'style/index.js'),
           format: 'es',
           sourcemap: isDev
         }

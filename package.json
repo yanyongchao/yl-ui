@@ -5,6 +5,7 @@
   "description": "我的第一个node项目",
   "license": "MIT",
   "private": true,
+  "sideEffects": false,
   "workspaces": [
     "packages/*"
   ],
@@ -13,9 +14,9 @@
     "build:site": "rimraf doc-site && dumi build",
     "preview:site": "npm run build:site && serve doc-site",
     "commit": "git-cz",
-    "clean": "rimraf lib esm dist",
+    "clean": "rimraf -rf lib es dist && rimraf -rf packages/*/{lib,es}",
     "build": "npm run clean && npx gulp",
-    "bd": "NODE_ENV=production rollup -c"
+    "bd": "npm run clean && npx rollup -c build-style.js --no-treeshake.moduleSideEffects"
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [
@@ -52,7 +53,7 @@
     "@types/react-dom": "^17.0.9",
     "@umijs/fabric": "^2.8.1",
     "@umijs/plugin-antd": "^0.11.0",
-    "autoprefixer": "^10.3.7",
+    "autoprefixer": "8.0.0",
     "babel-plugin-import": "^1.13.3",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
@@ -64,6 +65,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "husky": "^7.0.2",
     "lerna": "^4.0.0",
+    "less-plugin-npm-import": "^2.1.0",
     "lint-staged": "^11.2.2",
     "rollup": "^2.58.0",
     "rollup-plugin-esbuild": "^4.6.0",
